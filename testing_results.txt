@@ -1,0 +1,501 @@
+
+                TESTING SCENARIO #1:
+                !Solver Input:
+                - total pot: 4.0
+                - effective stack: 10.0
+                - hole cards: ['Jh', 'Kh']
+                - board cards: ['9c', '8c', '3h']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['KJs']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 60.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 60.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'KhJh', 'action': 'CHECK'}
+                !Response Time:
+                26.145118474960327
+                ---------------------------------------------
+            
+                TESTING SCENARIO #2:
+                !Solver Input:
+                - total pot: 12.0
+                - effective stack: 100.0
+                - hole cards: ['Ah', 'Qh']
+                - board cards: ['Ad', 'Ks', '5s']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['AQs']
+                - bet_size_IP_bet: 33.0
+                - bet_size_IP_raise: 75.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 100.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'AhQh', 'action': 'BET 6.000000'}
+                !Response Time:
+                38.125489234924316
+                ---------------------------------------------
+            
+                TESTING SCENARIO #3:
+                !Solver Input:
+                - total pot: 6.0
+                - effective stack: 40.0
+                - hole cards: ['Kd', 'Qc']
+                - board cards: ['7h', '7s', '2d']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['KQo']
+                - bet_size_IP_bet: 25.0
+                - bet_size_IP_raise: 60.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 75.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'KdQc', 'action': 'CHECK'}
+                !Response Time:
+                47.54243278503418
+                ---------------------------------------------
+            
+                TESTING SCENARIO #4:
+                !Solver Input:
+                - total pot: 8.0
+                - effective stack: 20.0
+                - hole cards: ['9d', '9c']
+                - board cards: ['Ts', 'Jc', 'Qd', '7h']
+                - game_stage: turn
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['99']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 80.0
+                - bet_size_OOP_bet: 40.0
+                - bet_size_OOP_raise: 60.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '9d9c', 'action': 'CHECK'}
+                !Response Time:
+                14.39750862121582
+                ---------------------------------------------
+            
+                TESTING SCENARIO #5:
+                !Solver Input:
+                - total pot: 25.0
+                - effective stack: 200.0
+                - hole cards: ['As', 'Ks']
+                - board cards: ['4s', '4c', '9h', 'Jh', '2d']
+                - game_stage: river
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['AKs']
+                - bet_size_IP_bet: 40.0
+                - bet_size_IP_raise: 90.0
+                - bet_size_OOP_bet: 33.0
+                - bet_size_OOP_raise: 70.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'AsKs', 'action': 'CHECK'}
+                !Response Time:
+                13.975767850875854
+                ---------------------------------------------
+            
+                TESTING SCENARIO #6:
+                !Solver Input:
+                - total pot: 10.0
+                - effective stack: 80.0
+                - hole cards: ['Ac', 'Ah']
+                - board cards: ['9s', '9d', '8h']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['AA']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 60.0
+                - bet_size_OOP_bet: 40.0
+                - bet_size_OOP_raise: 100.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'AhAc', 'action': 'BET 4.000000'}
+                !Response Time:
+                41.81609511375427
+                ---------------------------------------------
+            
+                TESTING SCENARIO #7:
+                !Solver Input:
+                - total pot: 15.0
+                - effective stack: 60.0
+                - hole cards: ['8h', '9s']
+                - board cards: ['5h', '6c', '7c', 'Kd']
+                - game_stage: turn
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['98o']
+                - bet_size_IP_bet: 25.0
+                - bet_size_IP_raise: 50.0
+                - bet_size_OOP_bet: 33.0
+                - bet_size_OOP_raise: 70.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '9s8h', 'action': 'BET 60.000000'}
+                !Response Time:
+                14.568942785263062
+                ---------------------------------------------
+            
+                TESTING SCENARIO #8:
+                !Solver Input:
+                - total pot: 18.0
+                - effective stack: 100.0
+                - hole cards: ['Kc', 'Qh']
+                - board cards: ['Kd', 'Qc', 'Jd', '5h']
+                - game_stage: turn
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['KQo']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 100.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 100.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'KcQh', 'action': 'BET 9.000000'}
+                !Response Time:
+                14.956255912780762
+                ---------------------------------------------
+            
+                TESTING SCENARIO #9:
+                !Solver Input:
+                - total pot: 30.0
+                - effective stack: 120.0
+                - hole cards: ['5d', '6d']
+                - board cards: ['2c', '4d', 'Td', 'Js', 'Jh']
+                - game_stage: river
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['65s']
+                - bet_size_IP_bet: 40.0
+                - bet_size_IP_raise: 90.0
+                - bet_size_OOP_bet: 40.0
+                - bet_size_OOP_raise: 90.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '6d5d', 'action': 'CHECK'}
+                !Response Time:
+                13.774606943130493
+                ---------------------------------------------
+            
+                TESTING SCENARIO #10:
+                !Solver Input:
+                - total pot: 50.0
+                - effective stack: 300.0
+                - hole cards: ['Qs', 'Qc']
+                - board cards: ['Ah', 'Ac', '7d']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['QQ']
+                - bet_size_IP_bet: 33.0
+                - bet_size_IP_raise: 66.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 100.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': 'QsQc', 'action': 'BET 25.000000'}
+                !Response Time:
+                51.264256954193115
+                ---------------------------------------------
+            
+                TESTING SCENARIO #11:
+                !Solver Input:
+                - total pot: 6.0
+                - effective stack: 25.0
+                - hole cards: ['2d', '7h']
+                - board cards: ['5h', '9c', 'Kd']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['72o']
+                - bet_size_IP_bet: 33.0
+                - bet_size_IP_raise: 66.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 75.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '7h2d', 'action': 'CHECK'}
+                !Response Time:
+                28.373098134994507
+                ---------------------------------------------
+            
+                TESTING SCENARIO #12:
+                !Solver Input:
+                - total pot: 8.0
+                - effective stack: 40.0
+                - hole cards: ['3d', '4d']
+                - board cards: ['8c', '2h', '2s']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['43s']
+                - bet_size_IP_bet: 40.0
+                - bet_size_IP_raise: 80.0
+                - bet_size_OOP_bet: 33.0
+                - bet_size_OOP_raise: 66.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '4d3d', 'action': 'CHECK'}
+                !Response Time:
+                28.119447708129883
+                ---------------------------------------------
+            
+                TESTING SCENARIO #13:
+                !Solver Input:
+                - total pot: 12.0
+                - effective stack: 60.0
+                - hole cards: ['7s', '2c']
+                - board cards: ['Th', 'Jd', '4s']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['72o']
+                - bet_size_IP_bet: 25.0
+                - bet_size_IP_raise: 50.0
+                - bet_size_OOP_bet: 50.0
+                - bet_size_OOP_raise: 100.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '7s2c', 'action': 'CHECK'}
+                !Response Time:
+                30.74281096458435
+                ---------------------------------------------
+            
+                TESTING SCENARIO #14:
+                !Solver Input:
+                - total pot: 10.0
+                - effective stack: 80.0
+                - hole cards: ['2s', '8h']
+                - board cards: ['3h', '3c', '9d', '5s']
+                - game_stage: turn
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['82o']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 100.0
+                - bet_size_OOP_bet: 25.0
+                - bet_size_OOP_raise: 75.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '8h2s', 'action': 'CHECK'}
+                !Response Time:
+                14.754644870758057
+                ---------------------------------------------
+            
+                TESTING SCENARIO #15:
+                !Solver Input:
+                - total pot: 15.0
+                - effective stack: 50.0
+                - hole cards: ['5c', '8d']
+                - board cards: ['4d', '7c', '9s']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['85o']
+                - bet_size_IP_bet: 33.0
+                - bet_size_IP_raise: 66.0
+                - bet_size_OOP_bet: 33.0
+                - bet_size_OOP_raise: 66.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '8d5c', 'action': 'CHECK'}
+                !Response Time:
+                37.62998676300049
+                ---------------------------------------------
+            
+                TESTING SCENARIO #16:
+                !Solver Input:
+                - total pot: 9.0
+                - effective stack: 35.0
+                - hole cards: ['6c', '3h']
+                - board cards: ['Ks', '9h', '2d']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['63o']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 80.0
+                - bet_size_OOP_bet: 40.0
+                - bet_size_OOP_raise: 100.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '6c3h', 'action': 'CHECK'}
+                !Response Time:
+                25.82465934753418
+                ---------------------------------------------
+            
+                TESTING SCENARIO #17:
+                !Solver Input:
+                - total pot: 20.0
+                - effective stack: 70.0
+                - hole cards: ['2c', '6s']
+                - board cards: ['Qh', '3c', '5d', '9s']
+                - game_stage: turn
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['62o']
+                - bet_size_IP_bet: 25.0
+                - bet_size_IP_raise: 50.0
+                - bet_size_OOP_bet: 40.0
+                - bet_size_OOP_raise: 80.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '6s2c', 'action': 'CHECK'}
+                !Response Time:
+                14.651286125183105
+                ---------------------------------------------
+            
+                TESTING SCENARIO #18:
+                !Solver Input:
+                - total pot: 14.0
+                - effective stack: 55.0
+                - hole cards: ['8c', '6d']
+                - board cards: ['5s', '7h', 'Td', 'Jh']
+                - game_stage: turn
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['86o']
+                - bet_size_IP_bet: 50.0
+                - bet_size_IP_raise: 75.0
+                - bet_size_OOP_bet: 40.0
+                - bet_size_OOP_raise: 90.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '8c6d', 'action': 'CHECK'}
+                !Response Time:
+                14.381038665771484
+                ---------------------------------------------
+            
+                TESTING SCENARIO #19:
+                !Solver Input:
+                - total pot: 5.0
+                - effective stack: 20.0
+                - hole cards: ['2h', '8s']
+                - board cards: ['6d', '4h', 'Td']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['82o']
+                - bet_size_IP_bet: 33.0
+                - bet_size_IP_raise: 66.0
+                - bet_size_OOP_bet: 33.0
+                - bet_size_OOP_raise: 66.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '8s2h', 'action': 'CHECK'}
+                !Response Time:
+                27.905020713806152
+                ---------------------------------------------
+            
+                TESTING SCENARIO #20:
+                !Solver Input:
+                - total pot: 11.0
+                - effective stack: 45.0
+                - hole cards: ['5d', '7d']
+                - board cards: ['8h', '4c', '4s']
+                - game_stage: flop
+                - role: OOP
+                - range_ip: ['22', '32o', '32s', '33', '42o', '42s', '43o', '43s', '44', '52o', '52s', '53o', '53s', '54o', '54s', '55', '62o', '62s', '63o', '63s', '64o', '64s', '65o', '65s', '66', '72o', '72s', '73o', '73s', '74o', '74s', '75o', '75s', '76o', '76s', '77', '82o', '82s', '83o', '83s', '84o', '84s', '85o', '85s', '86o', '86s', '87o', '87s', '88', '92o', '92s', '93o', '93s', '94o', '94s', '95o', '95s', '96o', '96s', '97o', '97s', '98o', '98s', '99', 'A2o', 'A2s', 'A3o', 'A3s', 'A4o', 'A4s', 'A5o', 'A5s', 'A6o', 'A6s', 'A7o', 'A7s', 'A8o', 'A8s', 'A9o', 'A9s', 'AA', 'AJo', 'AJs', 'AKo', 'AKs', 'AQo', 'AQs', 'ATo', 'ATs', 'J2o', 'J2s', 'J3o', 'J3s', 'J4o', 'J4s', 'J5o', 'J5s', 'J6o', 'J6s', 'J7o', 'J7s', 'J8o', 'J8s', 'J9o', 'J9s', 'JJ', 'JTo', 'JTs', 'K2o', 'K2s', 'K3o', 'K3s', 'K4o', 'K4s', 'K5o', 'K5s', 'K6o', 'K6s', 'K7o', 'K7s', 'K8o', 'K8s', 'K9o', 'K9s', 'KJo', 'KJs', 'KK', 'KQo', 'KQs', 'KTo', 'KTs', 'Q2o', 'Q2s', 'Q3o', 'Q3s', 'Q4o', 'Q4s', 'Q5o', 'Q5s', 'Q6o', 'Q6s', 'Q7o', 'Q7s', 'Q8o', 'Q8s', 'Q9o', 'Q9s', 'QJo', 'QJs', 'QQ', 'QTo', 'QTs', 'T2o', 'T2s', 'T3o', 'T3s', 'T4o', 'T4s', 'T5o', 'T5s', 'T6o', 'T6s', 'T7o', 'T7s', 'T8o', 'T8s', 'T9o', 'T9s', 'TT']
+                - range_oop: ['75s']
+                - bet_size_IP_bet: 40.0
+                - bet_size_IP_raise: 80.0
+                - bet_size_OOP_bet: 33.0
+                - bet_size_OOP_raise: 66.0
+                - accuracy: 0.05
+                - max_iteration: 500
+                - use_isomorphism: 0
+                - allin_threshold: 0.7
+                - et_thread_num: 4
+                !Solver Result:
+                {'cards': '7d5d', 'action': 'CHECK'}
+                !Response Time:
+                27.8019015789032
+                ---------------------------------------------
+            

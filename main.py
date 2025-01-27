@@ -1,9 +1,51 @@
 import tkinter as tk
 from tkinter import messagebox
-from service import capture_screen
+from service import Service, SolvePost
+
+
+service = Service()
 
 def capture_and_evaluate():
-    capture_screen()
+    # output_path = service.capture_screen()
+    # service.extract_info(output_path)
+
+    # TEST
+    board = ["9c", "8c", "3h"]
+    game_stage = service.define_game_stage(board)
+    hero_hole = ["Jh", "Kh"]  
+    role = "OOP"
+    ranges = service.generate_auto_ranges(board, hero_hole, role)
+    print(ranges)
+    range_ip=ranges["IP"]
+    range_oop=ranges["OOP"]
+    bet_size_ip_bet = 50
+    bet_size_ip_raise = 60
+    bet_size_oop_bet = 50
+    bet_size_oop_raise = 60
+
+    response = service.send_data_to_solver(
+        SolvePost(
+            hole_cards="".join(hero_hole),
+            pot=4,
+            effective_stack=10,
+            board=board,
+            range_ip=range_ip,
+            range_oop=range_oop,
+            game_stage=game_stage,
+            bet_size_IP_bet=bet_size_ip_bet,
+            bet_size_IP_raise=bet_size_ip_raise,
+            bet_size_OOP_bet=bet_size_oop_bet,
+            bet_size_OOP_raise=bet_size_oop_raise,
+            accuracy=0.05,
+            max_iteration=200,
+            use_isomorphism=1,
+            allin_threshold=0.67,
+            et_thread_num=8
+
+        )
+    )
+    print(response)
+
     # Simulate the evaluation process
     suggested_action = "Call"  # Replace with the result from your evaluation algorithm
     result_label.config(text=f"Suggested Action: {suggested_action}")
