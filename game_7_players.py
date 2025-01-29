@@ -1,4 +1,5 @@
 from typing import List, Dict, Optional
+from abc import ABC, abstractmethod
 import re
 
 class Game:
@@ -88,7 +89,7 @@ class Game:
         return min([i.effective_stack for i in self.players])
 
             
-class Player:
+class Player(ABC):
     def __init__(self, position: str, game: Game, effective_stack:float, hole_cards: Optional[str] = None):
         self.position: str = position  # UTG, LJ, HJ, CO, BTN, SB, BB
         self.bet_sizes: Dict[Dict[float]] = {
@@ -116,7 +117,8 @@ class Player:
         opponent_index = opponent.game.active_positions.index()
         return True if hero_index > opponent_index else False
 
-    def get_range(self) -> List[str]:
+    @abstractmethod
+    def get_ranges(self, opponent_position:str):
         pass
     
     def fold(self):
@@ -164,33 +166,175 @@ class Player:
     
     
 class UTG(Player):
-    def __init__(self, game: Game):
-        super().__init__(position="UTG", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="UTG", game=game, effective_stack=effective_stack)
+    
+    @staticmethod
+    def get_ranges(opponent_position:str):
+        hero_range = ""
+        opponent_range = ""
+
+        if opponent_position == "SB":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\SB\11.0bb\UTG\Call\UTG_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\SB\11.0bb\UTG\Call\SB_range.txt"
+        elif opponent_position == "BB":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\BB\Call\UTG_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\BB\Call\BB_range.txt"
+        elif opponent_position in ("LJ", "HJ"):
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\MP\8.5bb\UTG\Call\UTG_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\MP\8.5bb\UTG\Call\MP_range.txt"
+        elif opponent_position == "CO":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\CO\8.5bb\UTG\Call\UTG_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\CO\8.5bb\UTG\Call\CO_range.txt"
+        elif opponent_position == "BTN":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\BTN\Call\UTG_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\BTN\Call\BTN_range.txt"
+        
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range
 
 
 class LJ(Player):
-    def __init__(self, game: Game):
-        super().__init__(position="LJ", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="LJ", game=game, effective_stack=effective_stack)
+
+    @staticmethod
+    def get_ranges(opponent_position:str) -> List[str]:
+        hero_range = ""
+        opponent_range = ""
+        if opponent_position == "SB":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\SB\11.0bb\MP\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\SB\11.0bb\MP\Call\SB_range.txt"
+        elif opponent_position == "BB":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\BB\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\BB\Call\BB_range.txt"
+        elif opponent_position == "UTG":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\MP\8.5bb\UTG\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\MP\8.5bb\UTG\Call\UTG_range.txt"
+        elif opponent_position in ("CO", "HJ"):
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\CO\8.5bb\MP\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\CO\8.5bb\MP\Call\CO_range.txt"
+        elif opponent_position == "BTN":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\BTN\Call\BTN_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\BTN\Call\BTN_range.txt"
+
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range
 
 
 class HJ(Player):
-    def __init__(self, game: Game):
-        super().__init__(position="HJ", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="HJ", game=game, effective_stack=effective_stack)
 
+    @staticmethod
+    def get_ranges(opponent_position:str) -> List[str]:
+        hero_range = ""
+        opponent_range = ""
+        if opponent_position == "SB":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\SB\11.0bb\MP\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\SB\11.0bb\MP\Call\SB_range.txt"
+        elif opponent_position == "BB":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\BB\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\BB\Call\BB_range.txt"
+        elif opponent_position in ("UTG", "LJ"):
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\MP\8.5bb\UTG\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\MP\8.5bb\UTG\Call\UTG_range.txt"
+        elif opponent_position == "CO":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\CO\8.5bb\MP\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\CO\8.5bb\MP\Call\CO_range.txt"
+        elif opponent_position == "BTN":
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\BTN\Call\MP_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\BTN\Call\BTN_range.txt"
+
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range
 
 class CO(Player):
-    def __init__(self, game: Game):
-        super().__init__(position="CO", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="CO", game=game, effective_stack=effective_stack)
+
+    @staticmethod
+    def get_ranges(opponent_position:str) -> List[str]:
+        hero_range = ""
+        opponent_range = ""
+
+        if opponent_position == "SB":
+            hero_f_path = r"ranges\6max_range\CO\2.5bb\SB\11.0bb\CO\Call\CO_range.txt"
+            opponent_f_path = r"ranges\6max_range\CO\2.5bb\SB\11.0bb\CO\Call\SB_range.txt"
+        elif opponent_position == "BB":
+            hero_f_path = r"ranges\6max_range\CO\2.5bb\BB\Call\CO_range.txt"
+            opponent_f_path = r"ranges\6max_range\CO\2.5bb\BB\Call\BB_range.txt"
+        elif opponent_position in ("LJ", "HJ"):
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\CO\8.5bb\MP\Call\CO_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\CO\8.5bb\MP\Call\MP_range.txt"
+        elif opponent_position == "UTG":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\CO\8.5bb\UTG\Call\CO_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\CO\8.5bb\UTG\Call\UTG_range.txt"
+        elif opponent_position == "BTN":
+            hero_f_path = r"ranges\6max_range\CO\2.5bb\BTN\Call\CO_range.txt"
+            opponent_f_path = r"ranges\6max_range\CO\2.5bb\BTN\Call\BTN_range.txt"
+
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range
 
 
 class BTN(Player):
-    def __init__(self, game: Game):
-        super().__init__(position="BTN", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="BTN", game=game, effective_stack=effective_stack)
+
+    @staticmethod
+    def get_ranges(opponent_position:str) -> List[str]:
+        hero_range = ""
+        opponent_range = ""
+
+        if opponent_position == "SB":
+            hero_f_path = r"ranges\6max_range\BTN\2.5bb\SB\11.0bb\BTN\Call\BTN_range.txt"
+            opponent_f_path = r"ranges\6max_range\BTN\2.5bb\SB\11.0bb\BTN\Call\SB_range.txt"
+        elif opponent_position == "BB":
+            hero_f_path = r"ranges\6max_range\BTN\2.5bb\BB\Call\BTN_range.txt"
+            opponent_f_path = r"ranges\6max_range\BTN\2.5bb\BB\Call\BB_range.txt"
+        elif opponent_position in ("LJ", "HJ"):
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\BTN\Call\BTN_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\BTN\Call\MP_range.txt"
+        elif opponent_position == "UTG":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\BTN\Call\BTN_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\BTN\Call\UTG_range.txt"
+        elif opponent_position == "CO":
+            hero_f_path = r"ranges\6max_range\CO\2.5bb\BTN\Call\BTN_range.txt"
+            opponent_f_path = r"ranges\6max_range\CO\2.5bb\BTN\Call\CO_range.txt"
+
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range
 
 
 class Blinds(Player):
-    def __init__(self, position: str, game: Game):
-        super().__init__(position=position, game=game)
+    def __init__(self, position: str, game: Game, effective_stack: float):
+        super().__init__(position=position, game=game, effective_stack=effective_stack)
         self._game = game
         self._position = position
 
@@ -201,13 +345,74 @@ class Blinds(Player):
         self.effective_stack -= quantity
         self._game.update_history("pre-flop", self._position, f"POST ({quantity})")
         print(f"{self.position}: POST ({quantity})")
-        
+    
+    @staticmethod
+    def get_ranges(opponent_position:str):
+        pass
 
 class SB(Blinds):
-    def __init__(self, game: Game):
-        super().__init__(position="SB", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="SB", game=game, effective_stack=effective_stack)
+
+    @staticmethod
+    def get_ranges(opponent_position:str) -> List[str]:
+        hero_range = ""
+        opponent_range = ""
+
+        if opponent_position == "BTN":
+            hero_f_path = r"ranges\6max_range\BTN\2.5bb\SB\11.0bb\BTN\Call\SB_range.txt"
+            opponent_f_path = r"ranges\6max_range\BTN\2.5bb\SB\11.0bb\BTN\Call\BTN_range.txt"
+        elif opponent_position == "BB":
+            hero_f_path = r"ranges\6max_range\SB\3.0bb\BB\Call\SB_range.txt"
+            opponent_f_path = r"ranges\6max_range\SB\3.0bb\BB\Call\BB_range.txt"
+        elif opponent_position in ("LJ", "HJ"):
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\SB\11.0bb\MP\Call\SB_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\SB\11.0bb\MP\Call\MP_range.txt"
+        elif opponent_position == "UTG":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\SB\11.0bb\UTG\Call\SB_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\SB\11.0bb\UTG\Call\UTG_range.txt"
+        elif opponent_position == "CO":
+            hero_f_path = r"ranges\6max_range\CO\2.5bb\SB\11.0bb\CO\Call\SB_range.txt"
+            opponent_f_path = r"ranges\6max_range\CO\2.5bb\SB\11.0bb\CO\Call\CO_range.txt"
+
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range
 
 
 class BB(Blinds):
-    def __init__(self, game: Game):
-        super().__init__(position="BB", game=game)
+    def __init__(self, game: Game, effective_stack: float):
+        super().__init__(position="BB", game=game, effective_stack=effective_stack)
+
+    @staticmethod
+    def get_ranges(opponent_position:str) -> List[str]:
+        hero_range = ""
+        opponent_range = ""
+
+        if opponent_position == "BTN":
+            hero_f_path = r"ranges\6max_range\BTN\2.5bb\BB\Call\BB_range.txt"
+            opponent_f_path = r"ranges\6max_range\BTN\2.5bb\BB\Call\BTN_range.txt"
+        elif opponent_position == "SB":
+            hero_f_path = r"ranges\6max_range\SB\3.0bb\BB\Call\BB_range.txt"
+            opponent_f_path = r"ranges\6max_range\SB\3.0bb\BB\Call\SB_range.txt"
+        elif opponent_position in ("LJ", "HJ"):
+            hero_f_path = r"ranges\6max_range\MP\2.5bb\BB\Call\BB_range.txt"
+            opponent_f_path = r"ranges\6max_range\MP\2.5bb\BB\Call\MP_range.txt"
+        elif opponent_position == "UTG":
+            hero_f_path = r"ranges\6max_range\UTG\2.5bb\BB\Call\BB_range.txt"
+            opponent_f_path = r"ranges\6max_range\UTG\2.5bb\BB\Call\UTG_range.txt"
+        elif opponent_position == "CO":
+            hero_f_path = r"ranges\6max_range\CO\2.5bb\BB\Call\BB_range.txt"
+            opponent_f_path = r"ranges\6max_range\CO\2.5bb\BB\Call\CO_range.txt"
+
+        with open(hero_f_path, 'r') as f:
+            hero_range = f.read()
+        with open(opponent_f_path, 'r') as f:
+            opponent_range = f.read()
+        
+        
+        return hero_range, opponent_range

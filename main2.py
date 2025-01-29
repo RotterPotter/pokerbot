@@ -9,13 +9,13 @@ if __name__ == "__main__":
     bb=2
   )
   solver = Solver()
-  player1 = SB(game=game)
-  player2 = BB(game=game)
-  player3 = UTG(game=game)
-  player4 = LJ(game=game)
-  player5 = HJ(game=game)
-  player6 = CO(game=game)
-  player7 = BTN(game=game)
+  player1 = SB(game=game, effective_stack=200)
+  player2 = BB(game=game, effective_stack=200)
+  player3 = UTG(game=game, effective_stack=200)
+  player4 = LJ(game=game, effective_stack=200)
+  player5 = HJ(game=game, effective_stack=200)
+  player6 = CO(game=game, effective_stack=200)
+  player7 = BTN(game=game, effective_stack=200)
 
   game.add_players([player1, player2, player3, player4, player5, player6, player7])
 
@@ -59,7 +59,7 @@ if __name__ == "__main__":
   player4.bet(10)
   # HJ (we are)
   # !solver's help
-  response = solver.get_suggestion_tree()
+  # response = solver.get_suggestion_tree()
   we_are.raise_(25)
   # BTN folds
   player7.fold()
@@ -73,7 +73,7 @@ if __name__ == "__main__":
   game.add_board_card("7d")
   print(f'total pot: {game.total_pot}\nboard cards: {game.board_cards}')
 
-  game.show_results_in_terminal()
+  print(game.history)
 
 
 
