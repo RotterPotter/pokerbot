@@ -4,8 +4,16 @@ from typing import Dict
 import pytesseract
 import numpy as np
 from collections import Counter
+import math
 
 class Extractor:
+  """
+    players
+                  5
+              4       6
+              3       7
+                2   1
+  """
   PLAYER_ZONES: Dict = {
     1: {
       "dealer": (600, 600, 700, 680),
@@ -51,15 +59,9 @@ class Extractor:
       }
   }
 
-  SUIT_COLORS = {
-     "#2b4e6a": "d",
-     "#993b36": "h",
-     "#216a3d": "c",
-     "#222327": "s"
-     
-  }
 
   TOTAL_POT_ZONE = (335, 120, 425, 142)
+
   BOARD_CARD_ZONES = {
      1: (438, 400, 500, 465),
      2: (515, 400, 570, 465),
@@ -68,37 +70,13 @@ class Extractor:
      5: (730, 400, 793, 465)
   }
 
+  SUIT_COLORS = {
+     "blue": "d",
+     "red": "h",
+     "green": "c",
+     "black": "s",
+  }
 
-  def player_info(self, player_number: int) -> dict:
-    """
-      1. takes player_number on the table:
-                5
-            4       6
-            3       7
-              2   1
-      2. crops zone and extracts info
-      3. returns dictionary:{
-        "hole_cards": None or str,
-        "is_dealer": bool,
-        "pot": float
-      }
-    """
-    pass
-  
-  def total_pot(self) -> float:
-    """
-      Takes no params.
-      returns total pot size extracted from pot zone
-    """
-    pass
-
-  def board_cards(self):
-    """
-      Takes no params.
-      returns List[str] with board cards, extracted from board zone.
-    """
-    pass
-  
   def crop_zone(self, zone: tuple, ofp:str, ifp:str="testing.png"):
     """
       Takes zone,  output file path (ofp) and input file path (ifp (optional))
@@ -115,7 +93,7 @@ class Extractor:
       cropped = image[y1:y2, x1:x2]
       cv2.imwrite(ofp, cropped)
 
-  def tesseract_card_recognition(self, ifp:str) -> str:
+  def tesseract_text_recognition(self, ifp:str) -> str:
     image = cv2.imread(ifp)
 
     # Convert to grayscale
@@ -133,15 +111,12 @@ class Extractor:
   def tesseract_number_recognition(self, ifp:str) -> str:
       # Load the image
       image = cv2.imread(ifp)
-      if image is None:
-          raise ValueError(f"Error: Could not load image from path {ifp}")
 
       # Convert to grayscale
       gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-      # Apply adaptive thresholding to enhance text contrast
-      thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
-                                    cv2.THRESH_BINARY, 11, 2)
+      # Apply thresholding to enhance text contrast
+      _, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
 
       # Perform OCR with Tesseract (restricting to numbers only)
       custom_config = r'--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789.'
@@ -179,6 +154,54 @@ class Extractor:
       hex_color_non_white = "#{:02x}{:02x}{:02x}".format(*most_frequent_non_white_color)
 
       return hex_color_non_white
+  
+  def classify_color(self, hex_code):
+    # Strip out any leading '#' and make sure the hex is in a standard 6- or 8-digit form
+    hex_code = hex_code.strip().lstrip('#')
+    
+    # If there's an alpha channel (8 digits: e.g., AARRGGBB), parse only RR, GG, BB
+    # If 6 digits (RR, GG, BB), we take them directly
+    if len(hex_code) == 8:
+        # The first two are alpha, so skip them
+        hex_code = hex_code[2:]
+    elif len(hex_code) != 6:
+        raise ValueError("Hex code must be 6 digits (RGB) or 8 digits (AARRGGBB).")
+    
+    # Convert the remaining RR, GG, BB to integer values
+    r = int(hex_code[0:2], 16)
+    g = int(hex_code[2:4], 16)
+    b = int(hex_code[4:6], 16)
+    
+    # Reference colors we want to classify against
+    reference_colors = {
+        'red':   (255, 0, 0),
+        'green': (0, 128, 0),   # a "medium" green
+        'blue':  (0, 0, 255),
+        'black': (0, 0, 0)
+    }
+    
+    def euclidean_distance(c1, c2):
+        # Euclidean distance in RGB space
+        return math.sqrt((c1[0] - c2[0])**2 + (c1[1] - c2[1])**2 + (c1[2] - c2[2])**2)
+    
+    # Find the closest reference color
+    closest_color = None
+    min_distance = float('inf')
+    
+    for color_name, (cr, cg, cb) in reference_colors.items():
+        dist = euclidean_distance((r, g, b), (cr, cg, cb))
+        if dist < min_distance:
+            min_distance = dist
+            closest_color = color_name
+    
+    return closest_color
+  
+  def identify_card_suit(self, ifp:str) -> str:
+     hex = self.get_most_frequent_non_white_color(ifp)
+     color = self.classify_color(hex)
+     return self.SUIT_COLORS[color]
+  
+  
 
 
 
