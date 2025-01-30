@@ -1,5 +1,6 @@
 from game_7_players import Game, UTG, LJ, HJ, CO, BTN, SB, BB
 from solver import Solver
+import json
 
 if __name__ == "__main__":
   # testing scenario for flop
@@ -59,7 +60,7 @@ if __name__ == "__main__":
   player4.bet(10)
   # HJ (we are)
   # !solver's help
-  # response = solver.get_suggestion_tree()
+  response = solver.get_suggestion_tree(hero=we_are, opponent=player7)
   we_are.raise_(25)
   # BTN folds
   player7.fold()
@@ -74,8 +75,10 @@ if __name__ == "__main__":
   print(f'total pot: {game.total_pot}\nboard cards: {game.board_cards}')
 
   print(game.history)
+  
+  with open('testing.json', "w") as f:
 
-
+    json.dump(response, f)
 
 
 

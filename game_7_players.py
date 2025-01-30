@@ -105,16 +105,12 @@ class Player(ABC):
             "turn": 0,
             "river": 0
         }
-        self.bet_sizes: Dict[List[float]] = {
-            'flop': [20,40,80],
-            'turn': [20,40,80],
-            'river': [20,40,80],
-        }
+
         self.effective_stack: float = effective_stack
 
     def is_IP(self, opponent: "Player") -> bool:
         hero_index = self.game.active_positions.index(self.position)
-        opponent_index = opponent.game.active_positions.index()
+        opponent_index = opponent.game.active_positions.index(opponent.position)
         return True if hero_index > opponent_index else False
 
     @abstractmethod

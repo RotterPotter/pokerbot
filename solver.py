@@ -33,18 +33,27 @@ class Solver:
         return (cards_ev)
 
     def get_suggestion_tree(self, hero: Player, opponent:Player):
-        IP, OOP = hero, opponent if hero.is_IP(opponent) else opponent, hero
+        [IP, OOP] = [hero, opponent] if hero.is_IP(opponent) == True else [opponent, hero]
+        range_ip, range_oop = hero.get_ranges(opponent.position) if hero.is_IP == True else opponent.get_ranges(hero.position)
         game_stage = self.service.define_game_stage(hero.game.board_cards)
+
+        print(hero.is_IP(opponent))
+        if IP.hole_cards:
+            combo = f"{IP.hole_cards[0]}{IP.hole_cards[2]}o"
+            range_ip = f"{combo}:1.0," + range_ip
+        elif OOP.hole_cards:
+            combo = f"{OOP.hole_cards[0]}{OOP.hole_cards[2]}o"
+            range_oop = f"{combo}:1.0," + range_oop
 
         response = self.service.send_data_to_solver(
             SolvePost(
-                hero_role = "IP" if hero.is_IP else "OOP",
+                hero_role = "IP" if hero.is_IP == True else "OOP",
                 hole_cards=hero.hole_cards,
                 pot=hero.game.total_pot,
                 effective_stack=hero.game.min_effective_stack(),
-                board=",".join(hero.game.board_cards),
-                range_ip=",".join(IP.get_range()),
-                range_oop=",".join(OOP.get_range()),
+                board=hero.game.board_cards,
+                range_ip=range_ip.split(","),
+                range_oop=range_oop.split(","),
                 game_stage=game_stage,
                 bet_size_IP_bet=IP.bet_sizes[game_stage]["bet"],
                 bet_size_IP_raise=IP.bet_sizes[game_stage]["raise"],
@@ -57,6 +66,8 @@ class Solver:
                 et_thread_num=8
             )
         )
+
+        return response 
 
 
 

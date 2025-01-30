@@ -9,6 +9,7 @@ from typing import List
 import requests
 from itertools import product
 
+
 class SolvePost(BaseModel):
   hero_role:str
   hole_cards:str
@@ -32,15 +33,24 @@ dotenv.load_dotenv()
 class Service:
     SERVER_URL = r'http://localhost:8000'
 
-    def capture_screen(self, output_path="screenshot.png", region=None):
+    def capture_screen(self, output_path="screenshot.png", region:dict={
+                "left": 0,
+                "top": 0,
+                "width": 1230,
+                "height": 930,
+            }):
+        # remove previous screenshot if exists
+        if os.path.exists(output_path):
+            os.remove(output_path)
+
         with mss.mss() as sct:
             # Capture the entire screen if region is not provided
             if region is None:
                 screenshot = sct.shot(output=output_path)
             else:
                 # Validate the region keys
-                if not all(key in region for key in ('top', 'left', 'width', 'height')):
-                    raise ValueError("Region must have 'top', 'left', 'width', and 'height' keys.")
+                # if not all(key in region for key in ('top', 'left', 'width', 'height')):
+                #     raise ValueError("Region must have 'top', 'left', 'width', and 'height' keys.")
                 # Capture the specified region
                 screenshot = sct.grab(region)
                 # Save the image
@@ -51,7 +61,7 @@ class Service:
     
     def extract_info(self, image_path:str):
         pass
-
+    
     def send_data_to_solver(self, data: SolvePost):
         response = requests.post(
             f'{self.SERVER_URL}/solve',
@@ -162,5 +172,11 @@ class Service:
             5: "river"
         }
         return stages[len(board)]
+    
+    
+    @staticmethod
+    def beautify_solver_answer(decision_dict: dict):
+        return decision_dict
+
 
 
