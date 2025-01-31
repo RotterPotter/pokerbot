@@ -2,6 +2,8 @@ from typing import List, Dict, Optional
 from abc import ABC, abstractmethod
 import re
 
+
+
 class Game:
     def __init__(self, total_pot: float, effective_stack: float, bb: float):
         self.total_pot: float = total_pot
@@ -90,7 +92,7 @@ class Game:
 
             
 class Player(ABC):
-    def __init__(self, position: str, game: Game, effective_stack:float, hole_cards: Optional[str] = None):
+    def __init__(self, position: str, game: Game, effective_stack:float = 0, hole_cards: Optional[str] = None):
         self.position: str = position  # UTG, LJ, HJ, CO, BTN, SB, BB
         self.bet_sizes: Dict[Dict[float]] = {
             "flop": {"bet": 50, "raise": 60},
@@ -162,8 +164,9 @@ class Player(ABC):
     
     
 class UTG(Player):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="UTG", game=game, effective_stack=effective_stack)
+    position = "UTG"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
     
     @staticmethod
     def get_ranges(opponent_position:str):
@@ -196,8 +199,9 @@ class UTG(Player):
 
 
 class LJ(Player):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="LJ", game=game, effective_stack=effective_stack)
+    position = "LJ"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
 
     @staticmethod
     def get_ranges(opponent_position:str) -> List[str]:
@@ -229,8 +233,9 @@ class LJ(Player):
 
 
 class HJ(Player):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="HJ", game=game, effective_stack=effective_stack)
+    position = "HJ"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
 
     @staticmethod
     def get_ranges(opponent_position:str) -> List[str]:
@@ -261,8 +266,9 @@ class HJ(Player):
         return hero_range, opponent_range
 
 class CO(Player):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="CO", game=game, effective_stack=effective_stack)
+    position = "CO"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
 
     @staticmethod
     def get_ranges(opponent_position:str) -> List[str]:
@@ -295,8 +301,9 @@ class CO(Player):
 
 
 class BTN(Player):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="BTN", game=game, effective_stack=effective_stack)
+    position = "BTN"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
 
     @staticmethod
     def get_ranges(opponent_position:str) -> List[str]:
@@ -329,7 +336,7 @@ class BTN(Player):
 
 
 class Blinds(Player):
-    def __init__(self, position: str, game: Game, effective_stack: float):
+    def __init__(self, position: str, game: Game, effective_stack: float = 0):
         super().__init__(position=position, game=game, effective_stack=effective_stack)
         self._game = game
         self._position = position
@@ -347,8 +354,9 @@ class Blinds(Player):
         pass
 
 class SB(Blinds):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="SB", game=game, effective_stack=effective_stack)
+    position = "SB"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
 
     @staticmethod
     def get_ranges(opponent_position:str) -> List[str]:
@@ -381,8 +389,9 @@ class SB(Blinds):
 
 
 class BB(Blinds):
-    def __init__(self, game: Game, effective_stack: float):
-        super().__init__(position="BB", game=game, effective_stack=effective_stack)
+    position = "BB"
+    def __init__(self, game: Game, effective_stack: float = 0):
+        super().__init__(position=self.position, game=game, effective_stack=effective_stack)
 
     @staticmethod
     def get_ranges(opponent_position:str) -> List[str]:

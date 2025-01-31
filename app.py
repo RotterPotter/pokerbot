@@ -4,7 +4,10 @@ import os
 from game_7_players import Game
 from extractor import Extractor
 from typing import Optional
+from game_7_players import UTG, CO, LJ, HJ, BTN, SB, BB, Player
+from app_helper import AppHelper
 
+app_helper = AppHelper()
 service = Service()
 extractor = Extractor()
 game = None
@@ -21,13 +24,15 @@ def extract_info():
     # TODO: implement BB extraction or BB input
     bb:float = 1
 
+    # start game if not game 
+    if game is None:
+        game = Game(bb=bb, total_pot=0, effective_stack=0)
+
     # Extract total pot data
     extractor.crop_zone(zone=extractor.TOTAL_POT_ZONE, ofp="zones/total_pot.png", ifp=screenshot_path)
-    total_pot:float = extractor.tesseract_number_recognition("zones/total_pot.png")
-
-
+    game.total_pot = float(extractor.tesseract_number_recognition("zones/total_pot.png"))
+    
     # Extract board cards
-    board_cards:list = list()
     for card_number, card_zone in extractor.BOARD_CARD_ZONES.items():
         extractor.crop_zone(zone=card_zone, ifp=screenshot_path, ofp=f"zones/board/{card_number}.png")
         card_symbol = extractor.tesseract_text_recognition(f"zones/board/{card_number}.png").strip()
@@ -35,77 +40,71 @@ def extract_info():
             break
         card_suit = extractor.identify_card_suit(f"zones/board/{card_number}.png")
         card = card_symbol + card_suit
-        board_cards.append(card)
+        game.board_cards.append(card)
 
     # Extract player data
-    unactive_player_numbers:list = []
-    pots: dict = {}
-    btn_player_number: Optional[int] = None
-    hero_player_number: Optional[int] = None
-    hero_hole_cards: Optional[str] = None
-    effective_stack: Optional[float] = None
+    data = app_helper.extract_player_data(screenshot_path)
+    unactive_player_numbers:list = data[0]
+    btn_player_number: Optional[int] = data[1]
+    hero_player_number: Optional[int] = data[2]
+    hero_hole_cards: Optional[str] = data[3]
+    effective_stack: Optional[float] = data[4]
 
-    for player_number in range(8):
-        # crop player hole cards zonez
-        extractor.crop_zone(zone=extractor.PLAYER_ZONES[player_number]["first_card"], ifp=screenshot_path, ofp=f"zones/p{player_number}/first_card.png")
-        extractor.crop_zone(zone=extractor.PLAYER_ZONES[player_number]["second_card"],ifp=screenshot_path, ofp=f"zones/p{player_number}/second_card.png")
+    # define players and positions
+    positions = [SB, BB, UTG, LJ, HJ, CO]
+    player_positions = {btn_player_number: BTN}
+    hero_position = None
 
-        first_card_symbol = extractor.tesseract_text_recognition(f"zones/p{player_number}/first_card.png").strip()
-        second_card_symbol = extractor.tesseract_text_recognition(f"zones/p{player_number}/second_card.png").strip()
-        
-        # unactivate user if no cards in hand (even if he isn't a hero)
-        if first_card_symbol not in available_card_symbols:
-            card_color_hex = extractor.get_most_frequent_non_white_color(f"zones/p{player_number}/first_card.png")
-            # unactivate user 
-            if extractor.classify_color(card_color_hex) != "red":
-                unactive_player_numbers.append(player_number)
-                continue
+        # move of genious - I know :)
+    for index, position in enumerate(positions):
+        player_number = btn_player_number + index + 1
+        if player_number > 7:
+            player_number -= 7
 
-        if hero_player_number is not None:
-            # udentify hole cards if possible and if not identified
-            if first_card_symbol in available_card_symbols and second_card_symbol in available_card_symbols:
-                first_card_suit = extractor.identify_card_suit(f"zones/p{player_number}/first_card.png")
-                second_card_suit = extractor.identify_card_suit(f"zones/p{player_number}/second_card.png")
-                hero_hole_cards = first_card_symbol + first_card_suit + second_card_symbol + second_card_suit
+        player_positions[player_number] = position
 
-            hero_player_number = player_number
+    player1 = player_positions[1](game, effective_stack=effective_stack)
+    player2 = player_positions[2](game, effective_stack=effective_stack)
+    player3 = player_positions[3](game, effective_stack=effective_stack)
+    player4 = player_positions[4](game, effective_stack=effective_stack)
+    player5 = player_positions[5](game, effective_stack=effective_stack)
+    player6 = player_positions[6](game, effective_stack=effective_stack)
+    player7 = player_positions[7](game, effective_stack=effective_stack)
 
-        # check if player is BTN if not btn_player identified yet
-        if btn_player_number is None:
-            # crop dealer zone
-            extractor.crop_zone(zone=extractor.PLAYER_ZONES[player_number]["dealer"], ifp=screenshot_path, ofp=f"zones/p{player_number}/dealer.png")
-            # extract "D" from dealer zone
-            extracted_string = extractor.tesseract_text_recognition(f"zones/p{player_number}/dealer.png")
-            # if "D" extracted, player is button
-            if extracted_string.strip().upper() == "D":
-                btn_player_number = player_number
-        
-        # extract player's pot
-        extractor.crop_zone(extractor.PLAYER_ZONES[player_number]["pot"], ifp=screenshot_path, ofp=f"zones/p{player_number}/pot.png")
-        pot = extractor.tesseract_number_recognition(f"zones/p{player_number}/pot.png").strip()
-        if pot == "":
-            # unactivate player 
-            unactive_player_numbers.append(player_number)
-        else:
-            # update pots dict with player's pot
-            pot = float(pot)
-            pots.update(player_number, pot)
-            # set effective stack to pot value if pot value is smaller
-            if pot < effective_stack:
-                effective_stack = pot
+    we_are = UTG(game)
 
-    
-    # Creates a game object if not created
-    if game is None:
-        game = Game()
+    # define who we are
+    if hero_player_number == 1:
+        we_are = player1
+    elif hero_player_number == 2:
+        we_are = player2
+    elif hero_player_number == 3:
+        we_are = player3
+    elif hero_player_number == 4:
+        we_are = player4
+    elif hero_player_number == 5:
+        we_are = player5
+    elif hero_player_number == 6:
+        we_are = player6
+    elif hero_player_number == 7:
+        we_are = player7
 
-    # Updates UI vars
-    total_pot_var.set(f"Total pot: 423.5$")
-    effective_stack_var.set(f"Effective stack: 1200$")
-    board_cards_var.set(f"Board cards: ['Ks', '9h', 'Ah']")
-    hero_position_var.set(f"Hero position: UTG")
-    hole_cards_var.set(f"Hole cards: As3h")
-    active_opponents_var.set(f"Active opponents: ['LJ', 'CO', 'BTN']")
+
+    # TODO: resolve, because may cause problems
+    for player_number, position in player_positions.items():
+        if player_number in unactive_player_numbers:
+            try:
+                game.active_positions.remove(position.position)
+            except ValueError:
+                pass
+
+    # Update UI vars
+    total_pot_var.set(f"Total pot: {game.total_pot}$")
+    effective_stack_var.set(f"Effective stack: {effective_stack}")
+    board_cards_var.set(f"Board cards: {game.board_cards}")
+    hero_position_var.set(f"Hero position: {we_are.position}")
+    hole_cards_var.set(f"Hole cards: {we_are.hole_cards}")
+    active_opponents_var.set(f"Active opponents: {game.active_positions}")
     print("Extract Info triggered! Variables updated.")
 
 def build_strategy():
